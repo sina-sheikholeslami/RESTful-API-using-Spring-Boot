@@ -1,4 +1,4 @@
-package com.riiidlabs.assessment.model;
+package com.riiidlabs.assessment.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,12 +1,12 @@
-package com.riiidlabs.assessment.model;
+package com.riiidlabs.assessment.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "SPEAKERS")
-public class Speaker implements Serializable {
+@Table(name = "ATTENDEES" )
+public class Attendee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +22,14 @@ public class Speaker implements Serializable {
     private String email;
 
     @Column(nullable = false)
-    private String bio;
+    private String registered;
 
-    public Speaker(Long id, String name, String company, String email, String bio) {
+    public Attendee(Long id, String name, String company, String email, String registered) {
         this.id = id;
         this.name = name;
         this.company = company;
         this.email = email;
-        this.bio = bio;
+        this.registered = registered;
     }
 
     public Long getId() {
@@ -64,28 +64,28 @@ public class Speaker implements Serializable {
         this.email = email;
     }
 
-    public String getBio() {
-        return bio;
+    public String getRegistered() {
+        return registered;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setRegistered(String registered) {
+        this.registered = registered;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Speaker that = (Speaker) o;
+        Attendee that = (Attendee) o;
         return id.equals(that.id) &&
                 name.equals(that.name) &&
                 company.equals(that.company) &&
                 email.equals(that.email) &&
-                bio.equals(that.bio);
+                registered.equals(that.registered);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, company, email, bio);
+        return Objects.hash(id, name, company, email, registered);
     }
 }

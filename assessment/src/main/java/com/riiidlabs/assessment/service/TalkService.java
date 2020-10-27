@@ -1,7 +1,9 @@
 package com.riiidlabs.assessment.service;
 
+import com.riiidlabs.assessment.converter.DozerConverter;
+import com.riiidlabs.assessment.data.vo.TalkVO;
 import com.riiidlabs.assessment.exception.ResourceNotFoundException;
-import com.riiidlabs.assessment.model.Talk;
+import com.riiidlabs.assessment.data.model.Talk;
 import com.riiidlabs.assessment.repository.TalkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,25 +16,28 @@ public class TalkService {
     @Autowired
     TalkRepository talkRepository;
 
-    public Talk create(Talk talk) {
-        return talkRepository.save(talk);
+    public TalkVO create(TalkVO talkVO) {
+        var entity = DozerConverter.parseObject(talkVO, Talk.class);
+        var vo = DozerConverter.parseObject(talkRepository.save(entity), TalkVO.class);
+        return vo;
     }
 
-    public List<Talk> findAll() {
-        return talkRepository.findAll();
+    public List<TalkVO> findAll() {
+        return DozerConverter.parseListObjects(talkRepository.findAll(), TalkVO.class);
     }
 
-    public Talk findById(Long id) {
-        return talkRepository.findById(id)
+    public TalkVO findById(Long id) {
+        var entity = talkRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No record found for this ID"));
+        return DozerConverter.parseObject(entity, TalkVO.class);
     }
 
-    public Talk update(Talk talk) {
-        Talk entity = talkRepository.findById(talk.getId())
+    public TalkVO update(TalkVO talkVO) {
+        var entity = talkRepository.findById(talkVO.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No record found for this ID"));
-        entity.setTitle(talk.getTitle());
-        entity.setRoom(talk.getRoom());
-        return talkRepository.save(entity);
+        entity.setTitle(talkVO.getTitle());
+        entity.setRoom(talkVO.getRoom());
+        return DozerConverter.parseObject(talkRepository.save(entity), TalkVO.class);
     }
 
     public void delete(Long id) {

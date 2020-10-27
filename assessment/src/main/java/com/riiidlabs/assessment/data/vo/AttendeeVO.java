@@ -1,30 +1,17 @@
-package com.riiidlabs.assessment.model;
+package com.riiidlabs.assessment.data.vo;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "ATTENDEES" )
-public class Attendee implements Serializable {
+public class AttendeeVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String company;
-
-    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String registered;
 
-    public Attendee(Long id, String name, String company, String email, String registered) {
+    public AttendeeVO(Long id, String name, String company, String email, String registered) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -76,12 +63,12 @@ public class Attendee implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Attendee that = (Attendee) o;
-        return id.equals(that.id) &&
-                name.equals(that.name) &&
-                company.equals(that.company) &&
-                email.equals(that.email) &&
-                registered.equals(that.registered);
+        AttendeeVO that = (AttendeeVO) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(registered, that.registered);
     }
 
     @Override

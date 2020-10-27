@@ -1,9 +1,8 @@
 package com.riiidlabs.assessment.controller;
 
-import com.riiidlabs.assessment.model.Attendee;
-import com.riiidlabs.assessment.model.Speaker;
+import com.riiidlabs.assessment.data.model.Attendee;
+import com.riiidlabs.assessment.data.vo.AttendeeVO;
 import com.riiidlabs.assessment.service.AttendeeService;
-import com.riiidlabs.assessment.service.SpeakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +17,23 @@ public class AttendeeController {
     AttendeeService attendeeService;
 
     @GetMapping
-    public List<Attendee> findAllAttendees() {
+    public List<AttendeeVO> findAllAttendees() {
         return attendeeService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Attendee findAttendeeById(@PathVariable("id") Long id) {
+    public AttendeeVO findAttendeeById(@PathVariable("id") Long id) {
         return attendeeService.findById(id);
     }
 
     @PostMapping
-    public Attendee createAttendee(@RequestBody Attendee attendee) {
-        return attendeeService.create(attendee);
+    public AttendeeVO createAttendee(@RequestBody AttendeeVO attendeeVO) {
+        return attendeeService.create(attendeeVO);
     }
 
     @PutMapping
-    public Attendee updateAttendee(@RequestBody Attendee attendee) {
-        return attendeeService.update(attendee);
+    public AttendeeVO updateAttendee(@RequestBody AttendeeVO attendeeVO) {
+        return attendeeService.update(attendeeVO);
     }
 
     @DeleteMapping("/{id}")

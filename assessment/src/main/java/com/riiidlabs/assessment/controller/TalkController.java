@@ -1,6 +1,6 @@
 package com.riiidlabs.assessment.controller;
 
-import com.riiidlabs.assessment.model.Talk;
+import com.riiidlabs.assessment.data.vo.TalkVO;
 import com.riiidlabs.assessment.service.TalkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,23 +16,23 @@ public class TalkController {
 	TalkService talkService;
 
 	@GetMapping
-	public List<Talk> findAllTalks() {
+	public List<TalkVO> findAllTalks() {
 		return talkService.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Talk findTalkById(@PathVariable("id") Long id) {
+	public TalkVO findTalkById(@PathVariable("id") Long id) {
 		return talkService.findById(id);
 	}
 
 	@PostMapping
-	public Talk createTalk(@RequestBody Talk talk) {
-		return talkService.create(talk);
+	public TalkVO createTalk(@RequestBody TalkVO talkVO) {
+		return talkService.create(talkVO);
 	}
 
 	@PutMapping
-	public Talk updateTalk(@RequestBody Talk talk) {
-		return talkService.update(talk);
+	public TalkVO updateTalk(@RequestBody TalkVO talkVO) {
+		return talkService.update(talkVO);
 	}
 
 	@DeleteMapping("/{id}")

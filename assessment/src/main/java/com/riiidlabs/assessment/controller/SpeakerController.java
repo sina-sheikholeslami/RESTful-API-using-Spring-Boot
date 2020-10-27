@@ -1,7 +1,7 @@
 package com.riiidlabs.assessment.controller;
 
-import com.riiidlabs.assessment.model.Speaker;
-import com.riiidlabs.assessment.model.Talk;
+import com.riiidlabs.assessment.data.model.Speaker;
+import com.riiidlabs.assessment.data.vo.SpeakerVO;
 import com.riiidlabs.assessment.service.SpeakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,23 +17,23 @@ public class SpeakerController {
     SpeakerService speakerService;
 
     @GetMapping
-    public List<Speaker> findAllSpeakers() {
+    public List<SpeakerVO> findAllSpeakers() {
         return speakerService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Speaker findSpeakerById(@PathVariable("id") Long id) {
+    public SpeakerVO findSpeakerById(@PathVariable("id") Long id) {
         return speakerService.findById(id);
     }
 
     @PostMapping
-    public Speaker createSpeaker(@RequestBody Speaker speaker) {
-        return speakerService.create(speaker);
+    public SpeakerVO createSpeaker(@RequestBody SpeakerVO speakerVO) {
+        return speakerService.create(speakerVO);
     }
 
     @PutMapping
-    public Speaker updateSpeaker(@RequestBody Speaker speaker) {
-        return speakerService.update(speaker);
+    public SpeakerVO updateSpeaker(@RequestBody SpeakerVO speakerVO) {
+        return speakerService.update(speakerVO);
     }
 
     @DeleteMapping("/{id}")
