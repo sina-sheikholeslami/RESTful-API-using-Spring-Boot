@@ -10,7 +10,7 @@ public class Speaker implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long speakerId;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -24,20 +24,20 @@ public class Speaker implements Serializable {
     @Column(nullable = false)
     private String bio;
 
-    public Speaker(Long speakerId, String name, String company, String email, String bio) {
-        this.speakerId = speakerId;
+    public Speaker(Long id, String name, String company, String email, String bio) {
+        this.id = id;
         this.name = name;
         this.company = company;
         this.email = email;
         this.bio = bio;
     }
 
-    public Long getSpeakerId() {
-        return speakerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSpeakerId(Long speakerId) {
-        this.speakerId = speakerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -77,7 +77,7 @@ public class Speaker implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Speaker that = (Speaker) o;
-        return speakerId.equals(that.speakerId) &&
+        return id.equals(that.id) &&
                 name.equals(that.name) &&
                 company.equals(that.company) &&
                 email.equals(that.email) &&
@@ -86,6 +86,6 @@ public class Speaker implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(speakerId, name, company, email, bio);
+        return Objects.hash(id, name, company, email, bio);
     }
 }

@@ -10,7 +10,7 @@ public class Attendee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long attendeeId;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -24,20 +24,20 @@ public class Attendee implements Serializable {
     @Column(nullable = false)
     private String registered;
 
-    public Attendee(Long attendeeId, String name, String company, String email, String registered) {
-        this.attendeeId = attendeeId;
+    public Attendee(Long id, String name, String company, String email, String registered) {
+        this.id = id;
         this.name = name;
         this.company = company;
         this.email = email;
         this.registered = registered;
     }
 
-    public Long getAttendeeId() {
-        return attendeeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAttendeeId(Long attendeeId) {
-        this.attendeeId = attendeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -77,7 +77,7 @@ public class Attendee implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendee that = (Attendee) o;
-        return attendeeId.equals(that.attendeeId) &&
+        return id.equals(that.id) &&
                 name.equals(that.name) &&
                 company.equals(that.company) &&
                 email.equals(that.email) &&
@@ -86,6 +86,6 @@ public class Attendee implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(attendeeId, name, company, email, registered);
+        return Objects.hash(id, name, company, email, registered);
     }
 }
