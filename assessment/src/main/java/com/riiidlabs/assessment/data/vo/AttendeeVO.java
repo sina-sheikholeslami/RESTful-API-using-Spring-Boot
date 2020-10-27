@@ -11,12 +11,8 @@ public class AttendeeVO implements Serializable {
     private String email;
     private String registered;
 
-    public AttendeeVO(Long id, String name, String company, String email, String registered) {
-        this.id = id;
-        this.name = name;
-        this.company = company;
-        this.email = email;
-        this.registered = registered;
+    public AttendeeVO() {
+
     }
 
     public Long getId() {

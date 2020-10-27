@@ -9,10 +9,8 @@ public class TalkVO implements Serializable {
     private String title;
     private String room;
 
-    public TalkVO(Long id, String title, String room) {
-        this.id = id;
-        this.title = title;
-        this.room = room;
+    public TalkVO() {
+
     }
 
     public Long getId() {

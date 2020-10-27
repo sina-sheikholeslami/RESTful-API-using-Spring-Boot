@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ATTENDEES" )
+@Table(name = "ATTENDEES")
 public class Attendee implements Serializable {
 
     @Id
@@ -24,12 +24,8 @@ public class Attendee implements Serializable {
     @Column(nullable = false)
     private String registered;
 
-    public Attendee(Long id, String name, String company, String email, String registered) {
-        this.id = id;
-        this.name = name;
-        this.company = company;
-        this.email = email;
-        this.registered = registered;
+    public Attendee() {
+
     }
 
     public Long getId() {

@@ -18,10 +18,8 @@ public class Talk implements Serializable {
     @Column(nullable = false)
     private String room;
 
-    public Talk(Long id, String title, String room) {
-        this.id = id;
-        this.title = title;
-        this.room = room;
+    public Talk() {
+
     }
 
     public Long getId() {

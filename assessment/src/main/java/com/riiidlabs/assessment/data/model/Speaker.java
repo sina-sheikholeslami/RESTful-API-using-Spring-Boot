@@ -24,12 +24,8 @@ public class Speaker implements Serializable {
     @Column(nullable = false)
     private String bio;
 
-    public Speaker(Long id, String name, String company, String email, String bio) {
-        this.id = id;
-        this.name = name;
-        this.company = company;
-        this.email = email;
-        this.bio = bio;
+    public Speaker() {
+
     }
 
     public Long getId() {
