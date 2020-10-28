@@ -2,14 +2,16 @@ package com.riiidlabs.assessment.controller;
 
 import com.riiidlabs.assessment.data.vo.TalkVO;
 import com.riiidlabs.assessment.service.TalkService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "Talks Endpoint")
 @RestController
-@RequestMapping("/v1/conference/talks")
+@RequestMapping("/api/conference/talks/v1")
 public class TalkController {
 
 	@Autowired

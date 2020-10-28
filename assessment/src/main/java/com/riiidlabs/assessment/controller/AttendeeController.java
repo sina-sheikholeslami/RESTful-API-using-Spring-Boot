@@ -1,16 +1,17 @@
 package com.riiidlabs.assessment.controller;
 
-import com.riiidlabs.assessment.data.model.Attendee;
 import com.riiidlabs.assessment.data.vo.AttendeeVO;
 import com.riiidlabs.assessment.service.AttendeeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "Attendees Endpoint")
 @RestController
-@RequestMapping("/v1/conference/attendees")
+@RequestMapping("/api/conference/attendees/v1")
 public class AttendeeController {
 
     @Autowired

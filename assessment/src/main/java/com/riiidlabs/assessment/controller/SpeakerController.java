@@ -1,16 +1,17 @@
 package com.riiidlabs.assessment.controller;
 
-import com.riiidlabs.assessment.data.model.Speaker;
 import com.riiidlabs.assessment.data.vo.SpeakerVO;
 import com.riiidlabs.assessment.service.SpeakerService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "Speakers Endpoint")
 @RestController
-@RequestMapping("/v1/conference/speakers")
+@RequestMapping("/api/conference/speakers/v1")
 public class SpeakerController {
 
     @Autowired
