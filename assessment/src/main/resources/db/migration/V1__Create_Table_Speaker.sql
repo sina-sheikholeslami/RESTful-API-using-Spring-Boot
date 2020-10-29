@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `SPEAKERS` (
+CREATE TABLE IF NOT EXISTS `SPEAKER` (
   `speaker_id` bigint NOT NULL AUTO_INCREMENT,
   `bio` varchar(255) NOT NULL,
   `company` varchar(255) NOT NULL,

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "SPEAKERS")
+@Table(name = "SPEAKER")
 public class Speaker implements Serializable {
 
     @Id
@@ -26,7 +26,7 @@ public class Speaker implements Serializable {
     @Column(nullable = false)
     private String bio;
 
-    @OneToMany(mappedBy = "SPEAKERS")
+    @OneToMany(mappedBy = "speaker")
     private List<Talk> talks;
 
     public Speaker() {
