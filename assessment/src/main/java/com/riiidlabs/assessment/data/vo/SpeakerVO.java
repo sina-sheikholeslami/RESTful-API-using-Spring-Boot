@@ -1,6 +1,9 @@
 package com.riiidlabs.assessment.data.vo;
 
+import com.riiidlabs.assessment.data.model.Talk;
+
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class SpeakerVO implements Serializable {
@@ -10,6 +13,7 @@ public class SpeakerVO implements Serializable {
     private String company;
     private String email;
     private String bio;
+    private List<Talk> talks;
 
     public SpeakerVO() {
 
@@ -55,6 +59,14 @@ public class SpeakerVO implements Serializable {
         this.bio = bio;
     }
 
+    public List<Talk> getTalks() {
+        return talks;
+    }
+
+    public void setTalks(List<Talk> talks) {
+        this.talks = talks;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,11 +76,12 @@ public class SpeakerVO implements Serializable {
                 Objects.equals(name, speakerVO.name) &&
                 Objects.equals(company, speakerVO.company) &&
                 Objects.equals(email, speakerVO.email) &&
-                Objects.equals(bio, speakerVO.bio);
+                Objects.equals(bio, speakerVO.bio) &&
+                Objects.equals(talks, speakerVO.talks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, company, email, bio);
+        return Objects.hash(id, name, company, email, bio, talks);
     }
 }

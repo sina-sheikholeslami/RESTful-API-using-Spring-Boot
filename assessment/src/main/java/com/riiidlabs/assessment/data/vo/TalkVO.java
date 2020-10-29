@@ -1,6 +1,11 @@
 package com.riiidlabs.assessment.data.vo;
 
+import com.riiidlabs.assessment.data.model.Attendee;
+import com.riiidlabs.assessment.data.model.Speaker;
+import com.riiidlabs.assessment.data.model.Talk;
+
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class TalkVO implements Serializable {
@@ -8,6 +13,8 @@ public class TalkVO implements Serializable {
     private Long id;
     private String title;
     private String room;
+    private List<Attendee> attendees;
+    private Speaker speaker;
 
     public TalkVO() {
 
@@ -37,6 +44,22 @@ public class TalkVO implements Serializable {
         this.room = room;
     }
 
+    public List<Attendee> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(List<Attendee> attendees) {
+        this.attendees = attendees;
+    }
+
+    public Speaker getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(Speaker speaker) {
+        this.speaker = speaker;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,11 +67,13 @@ public class TalkVO implements Serializable {
         TalkVO talkVO = (TalkVO) o;
         return Objects.equals(id, talkVO.id) &&
                 Objects.equals(title, talkVO.title) &&
-                Objects.equals(room, talkVO.room);
+                Objects.equals(room, talkVO.room) &&
+                Objects.equals(attendees, talkVO.attendees) &&
+                Objects.equals(speaker, talkVO.speaker);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, room);
+        return Objects.hash(id, title, room, attendees, speaker);
     }
 }

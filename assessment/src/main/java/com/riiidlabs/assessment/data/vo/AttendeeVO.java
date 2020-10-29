@@ -1,5 +1,7 @@
 package com.riiidlabs.assessment.data.vo;
 
+import com.riiidlabs.assessment.data.model.Talk;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,6 +12,7 @@ public class AttendeeVO implements Serializable {
     private String company;
     private String email;
     private String registered;
+    private Talk talk;
 
     public AttendeeVO() {
 
@@ -55,6 +58,14 @@ public class AttendeeVO implements Serializable {
         this.registered = registered;
     }
 
+    public Talk getTalk() {
+        return talk;
+    }
+
+    public void setTalk(Talk talk) {
+        this.talk = talk;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,11 +75,12 @@ public class AttendeeVO implements Serializable {
                 Objects.equals(name, that.name) &&
                 Objects.equals(company, that.company) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(registered, that.registered);
+                Objects.equals(registered, that.registered) &&
+                Objects.equals(talk, that.talk);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, company, email, registered);
+        return Objects.hash(id, name, company, email, registered, talk);
     }
 }

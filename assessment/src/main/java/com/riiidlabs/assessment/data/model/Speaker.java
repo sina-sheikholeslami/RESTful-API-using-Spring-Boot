@@ -2,6 +2,7 @@ package com.riiidlabs.assessment.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,6 +11,7 @@ public class Speaker implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "speaker_id")
     private Long id;
 
     @Column(nullable = false)
@@ -23,6 +25,9 @@ public class Speaker implements Serializable {
 
     @Column(nullable = false)
     private String bio;
+
+    @OneToMany(mappedBy = "SPEAKERS")
+    private List<Talk> talks;
 
     public Speaker() {
 
@@ -68,20 +73,29 @@ public class Speaker implements Serializable {
         this.bio = bio;
     }
 
+    public List<Talk> getTalks() {
+        return talks;
+    }
+
+    public void setTalks(List<Talk> talks) {
+        this.talks = talks;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Speaker that = (Speaker) o;
-        return id.equals(that.id) &&
-                name.equals(that.name) &&
-                company.equals(that.company) &&
-                email.equals(that.email) &&
-                bio.equals(that.bio);
+        Speaker speaker = (Speaker) o;
+        return Objects.equals(id, speaker.id) &&
+                Objects.equals(name, speaker.name) &&
+                Objects.equals(company, speaker.company) &&
+                Objects.equals(email, speaker.email) &&
+                Objects.equals(bio, speaker.bio) &&
+                Objects.equals(talks, speaker.talks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, company, email, bio);
+        return Objects.hash(id, name, company, email, bio, talks);
     }
 }
