@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USER")
 public class User implements UserDetails, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private Long id;
 
     @Column(name = "user_name", unique = true)
