@@ -2,7 +2,6 @@ package com.riiidlabs.assessment.data.vo;
 
 import com.riiidlabs.assessment.data.model.Attendee;
 import com.riiidlabs.assessment.data.model.Speaker;
-import com.riiidlabs.assessment.data.model.Talk;
 
 import java.io.Serializable;
 import java.util.List;
