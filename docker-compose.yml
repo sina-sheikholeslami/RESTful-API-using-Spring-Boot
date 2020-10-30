@@ -1,12 +1,9 @@
 version: '3.4'
 services:
   db:
-    image: sinasheikholeslami/mysql-rest-api-with-spring-boot
+    image: mysql:5.7.22
     command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: docker
       MYSQL_USER: docker
@@ -17,18 +14,15 @@ services:
     networks:
       - sina-network
   rest-api-with-spring-boot:
-      image: sinasheikholeslami/rest-api-with-spring-boot
+      image: sinasheikholeslami/rest-api-using-spring-boot
       restart: always
       build: ./assessment
       working_dir: /assessment
       environment:
         SPRING_BOOT_ENVIRONMENT: Production
-      volumes:
-        - ./assessment:/assessment
-        - ~/.m2:/root/.m2
       ports:
         - "8080:8080"
-      command: mvn clean spring-boot:run
+      command: mvn spring-boot:run
       links:
         - db
       depends_on:
