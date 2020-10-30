@@ -2,6 +2,8 @@ package com.riiidlabs.assessment.data.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.riiidlabs.assessment.data.model.Permission;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
