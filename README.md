@@ -1,4 +1,4 @@
-REFTful API using Spring Boot
+RESTful API using Spring Boot 2.3.5
 
 The API implements the following features:
 
